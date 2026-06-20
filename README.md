@@ -155,7 +155,7 @@ Each skill is a standalone `SKILL.md` file. Copy the ones you need into your age
 | source-driven-development | Over-idealized workflow |
 | browser-testing-with-devtools | Requires MCP Chrome setup |
 | deprecation-and-migration | Too niche |
-| observability-and-instrumentation | Overkill for small-toid projects |
+| observability-and-instrumentation | Overkill for small-to-mid projects |
 | ci-cd-and-automation | Covered by existing GitHub workflow skills |
 | code-simplification | Absorbed into code review process |
 | documentation-and-adrs | Covered by existing capabilities |
