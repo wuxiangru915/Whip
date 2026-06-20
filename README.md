@@ -1,6 +1,6 @@
 <div align="center">
 
-# ⚡ Whip
+# 🐎 Whip
 
 **Production-grade engineering skills for AI coding agents.**
 
@@ -14,7 +14,7 @@ A curated fusion of [obra/superpowers](https://github.com/obra/superpowers) and 
 
 ---
 
-## Why Whip? 🐎
+## Why Whip? 
 
 Recently, the AI engineering community has been obsessed with "harnessing" agents and workflows. Everyone is trying to put a **harness** on AI to control it.
 
