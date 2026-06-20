@@ -14,71 +14,112 @@ A curated fusion of [obra/superpowers](https://github.com/obra/superpowers) and 
 
 ---
 
-## What is Whip?
+## Why Whip? 🐎
 
-Whip is a skill pack for [Hermes Agent](https://hermes-agent.nousresearch.com/) (and compatible AI coding agents) that encodes senior engineering workflows into reusable, triggerable skills.
+Recently, the AI engineering community has been obsessed with "harnessing" agents and workflows. Everyone is trying to put a **harness** on AI to control it.
 
-It combines:
-- **Superpowers' execution engine** — subagent-driven development, TDD, git worktrees, plan execution
-- **Agent-skills' quality gates** — adversarial review, security hardening, performance budgets, API design, requirements extraction
+But we thought: *Why just harness it when you can drive it forward?*
 
-The result is a complete **Define → Plan → Build → Verify → Review → Ship** pipeline.
+While others are busy fitting the leather straps and buckles to build a **harness**, **Whip** gives you the whip to actively drive and orchestrate your `Superpowers` and `Agent-skills`.
 
-## Skills Overview
+Don't just restrain AI engineering—**whip it into action**.
 
-### 🧠 Define Phase
+---
 
-| Skill | Purpose |
-|-------|---------|
-| [whip-brainstorming](skills/superpowers/whip-brainstorming/) | Design exploration with interview-me techniques — hypothesis + confidence, want-vs-should-want detection |
-| [whip-requirements-interview](skills/software-development/whip-requirements-interview/) | Extract what the user actually wants through structured one-at-a-time questioning with guesses |
+## Installation
 
-### 📋 Plan Phase
+### Option 1: Hermes Agent Plugin (Recommended)
 
-| Skill | Purpose |
-|-------|---------|
-| [whip-writing-plans](skills/superpowers/whip-writing-plans/) | Bite-sized implementation plans with file paths, acceptance criteria, and execution order |
+```bash
+# Install via agy CLI
+agy plugin install https://github.com/wuxiangru915/Whip
 
-### 🔨 Build Phase
+# Verify installation
+agy skills list | grep whip
+```
 
-| Skill | Purpose |
-|-------|---------|
-| [whip-test-driven-development](skills/superpowers/whip-test-driven-development/) | RED-GREEN-REFACTOR — no production code without a failing test first |
-| [whip-subagent-driven-development](skills/superpowers/whip-subagent-driven-development/) | Execute plans via delegate_task subagents with 2-stage review |
-| [whip-executing-plans](skills/superpowers/whip-executing-plans/) | Run implementation plans in separate sessions with review checkpoints |
-| [whip-dispatching-parallel-agents](skills/superpowers/whip-dispatching-parallel-agents/) | Parallel execution of independent tasks |
-| [whip-using-git-worktrees](skills/superpowers/whip-using-git-worktrees/) | Isolated workspaces for feature work via git worktree |
+### Option 2: Manual Install
 
-### 🔍 Verify Phase
+```bash
+# Clone the repo
+git clone https://github.com/wuxiangru915/Whip.git
 
-| Skill | Purpose |
-|-------|---------|
-| [whip-verification-before-completion](skills/superpowers/whip-verification-before-completion/) | Evidence before claims — run verification commands before saying "done" |
-| [whip-systematic-debugging](skills/superpowers/whip-systematic-debugging/) | 4-phase root cause debugging: understand before fixing |
+# Copy skills into your Hermes skills directory
+cp -r Whip/skills/* ~/.hermes/skills/
 
-### 👀 Review Phase
+# Or into any compatible agent's skill directory
+cp -r Whip/skills/* /path/to/your/agent/skills/
+```
 
-| Skill | Purpose |
-|-------|---------|
-| [whip-adversarial-review](skills/software-development/whip-adversarial-review/) | Fresh-context adversarial review for non-trivial decisions — biased to disprove, not approve |
-| [whip-security-review](skills/software-development/whip-security-review/) | OWASP Top 10, SSRF, LLM security, input validation, secrets management |
-| [whip-performance-review](skills/software-development/whip-performance-review/) | Core Web Vitals, N+1 queries, bundle size, caching, performance budgets |
-| [whip-api-design](skills/software-development/whip-api-design/) | Contract-first design, Hyrum's Law, REST patterns, error semantics |
-| [whip-requesting-code-review](skills/superpowers/whip-requesting-code-review/) | Pre-commit review: security scan, quality gates, auto-fix |
-| [whip-receiving-code-review](skills/superpowers/whip-receiving-code-review/) | Handle code review feedback with technical rigor, not performative agreement |
+### Option 3: Cherry-Pick Individual Skills
 
-### 🚀 Ship Phase
+Only need specific skills? Copy just what you need:
 
-| Skill | Purpose |
-|-------|---------|
-| [whip-finishing-a-development-branch](skills/superpowers/whip-finishing-a-development-branch/) | Merge, PR, or cleanup — structured options for completing work |
+```bash
+git clone https://github.com/wuxiangru915/Whip.git
 
-### 🛠 Meta
+# Pick individual skills
+cp -r Whip/skills/superpowers/whip-brainstorming ~/.hermes/skills/
+cp -r Whip/skills/software-development/whip-security-review ~/.hermes/skills/
+```
 
-| Skill | Purpose |
-|-------|---------|
-| [whip-using-superpowers](skills/superpowers/whip-using-superpowers/) | Bootstrap: establishes how to find and use skills |
-| [whip-writing-skills](skills/superpowers/whip-writing-skills/) | Create, edit, and verify skills before deployment |
+---
+
+## All Skills & Invoke Commands
+
+### 🧠 Define — Clarify what to build
+
+| Invoke Command | When to Use |
+|----------------|-------------|
+| `whip-brainstorming` | Before any creative work — creating features, building components, adding functionality. Explores user intent, requirements and design before implementation. |
+| `whip-requirements-interview` | When the ask is underspecified ("build me X" without who/why), when user says "interview me" or "are we sure?", or when you catch yourself filling in ambiguous requirements before any plan exists. |
+
+### 📋 Plan — Break it down
+
+| Invoke Command | When to Use |
+|----------------|-------------|
+| `whip-writing-plans` | When you have a spec or requirements for a multi-step task, before touching code. Produces bite-sized tasks with file paths and acceptance criteria. |
+
+### 🔨 Build — Write the code
+
+| Invoke Command | When to Use |
+|----------------|-------------|
+| `whip-test-driven-development` | When implementing any feature or bugfix, before writing implementation code. Enforces RED-GREEN-REFACTOR. |
+| `whip-subagent-driven-development` | When executing implementation plans with independent tasks. Spawns subagents for parallel execution with 2-stage review. |
+| `whip-executing-plans` | When you have a written implementation plan to execute in a separate session with review checkpoints. |
+| `whip-dispatching-parallel-agents` | When facing 2+ independent tasks that can be worked on without shared state or sequential dependencies. |
+| `whip-using-git-worktrees` | When starting feature work that needs isolation from current workspace. Creates isolated workspace via git worktree. |
+
+### 🔍 Verify — Prove it works
+
+| Invoke Command | When to Use |
+|----------------|-------------|
+| `whip-verification-before-completion` | When about to claim work is complete, fixed, or passing. Requires running verification commands and confirming output before making any success claims. |
+| `whip-systematic-debugging` | When encountering any bug, test failure, or unexpected behavior. 4-phase root cause debugging: understand before fixing. |
+
+### 👀 Review — Quality gates before merge
+
+| Invoke Command | When to Use |
+|----------------|-------------|
+| `whip-adversarial-review` | When correctness matters more than speed. Fresh-context adversarial review for non-trivial decisions — biased to disprove, not approve. |
+| `whip-security-review` | Before committing code that handles user input, authentication, data storage, or external integrations. OWASP Top 10, SSRF, LLM security. |
+| `whip-performance-review` | When performance requirements exist, when profiling reveals bottlenecks, or when Core Web Vitals / load times need improvement. |
+| `whip-api-design` | When designing REST endpoints, module boundaries, component props, or any public interface. Contract-first design, Hyrum's Law, error semantics. |
+| `whip-requesting-code-review` | When completing tasks, implementing major features, or before merging. Pre-commit review: security scan, quality gates, auto-fix. |
+| `whip-receiving-code-review` | When receiving code review feedback, before implementing suggestions. Requires technical rigor and verification, not performative agreement. |
+
+### 🚀 Ship — Deploy with confidence
+
+| Invoke Command | When to Use |
+|----------------|-------------|
+| `whip-finishing-a-development-branch` | When implementation is complete, all tests pass, and you need to decide how to integrate the work. Merge, PR, or cleanup. |
+
+### 🛠 Meta — Skills about skills
+
+| Invoke Command | When to Use |
+|----------------|-------------|
+| `whip-using-superpowers` | When starting any conversation. Establishes how to find and use skills, requiring Skill tool invocation before ANY response. |
+| `whip-writing-skills` | When creating new skills, editing existing skills, or verifying skills work before deployment. |
 
 ---
 
@@ -128,28 +169,35 @@ User request
 
 ---
 
-## Installation
-
-### Hermes Agent
+## Quick Reference
 
 ```bash
-# As a plugin
-agy plugin install https://github.com/wuxiangru915/Whip
+# Start a new feature
+"Let's build a user dashboard"
+# → whip-brainstorming → whip-writing-plans → whip-subagent-driven-development
 
-# Or copy skills directly
-git clone https://github.com/wuxiangru915/Whip.git
-cp -r Whip/skills/* ~/.hermes/skills/
+# Fix a bug
+"The login form throws 500 on empty email"
+# → whip-systematic-debugging → whip-test-driven-development
+
+# Review before commit
+"Review this code before I push"
+# → whip-security-review + whip-performance-review + whip-requesting-code-review
+
+# Design an API
+"Design the REST API for our task manager"
+# → whip-api-design → whip-writing-plans
+
+# Validate an idea
+"I want to add real-time notifications"
+# → whip-requirements-interview → whip-brainstorming
 ```
-
-### Other AI Coding Agents
-
-Each skill is a standalone `SKILL.md` file. Copy the ones you need into your agent's skill directory.
 
 ---
 
 ## What's NOT Included (and Why)
 
-| agent-skills skill | Reason |
+| agent-skills skill | Why not |
 |---|---|
 | context-engineering | Theoretical, limited practical value |
 | source-driven-development | Over-idealized workflow |
